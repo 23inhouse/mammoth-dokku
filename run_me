@@ -1,0 +1,16 @@
+#! /bin/bash
+
+user=$1
+host=$2
+port=${3:-22}
+
+echo '--- seting up local files for secure copy'
+mkdir ./setup/.ssh/
+cp ~/.ssh/id_rsa.pub ./setup/.ssh/id_rsa.pub
+cp ~/.ssh/id_rsa.pub ./setup/.ssh/authorized_keys
+echo '--- secure copy'
+scp -P$port -r ./setup $user@$host:/home/$user/.
+echo '--- finished'
+
+echo "Now type: ssh -p$port $user@$host"
+echo "And run: sudo ~/setup/remote_1 {new_user_name}"

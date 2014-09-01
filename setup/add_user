@@ -1,0 +1,19 @@
+#! /bin/bash
+
+user=$1
+
+echo '--- add user'
+sudo adduser $user
+sudo usermod -aG admin $user
+
+sudo cp -r ~/setup /home/$user/.
+sudo chown -R $user:$user /home/$user/setup
+cd /home/$user/
+
+sudo mkdir -p /home/$user/.ssh
+sudo cp -r ~/setup/.ssh /home/$user/.
+sudo chown -R $user:$user .ssh
+sudo chmod 700 .ssh
+sudo chmod 600 .ssh/authorized_keys
+
+echo '--- add user finished'

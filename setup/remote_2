@@ -1,0 +1,6 @@
+#! /bin/bash
+
+cd ~/setup
+./del_user vps
+./swapfile
+./docker

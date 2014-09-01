@@ -1,0 +1,7 @@
+#! /bin/bash
+
+user=$1
+
+cd ~/setup
+./add_user $user
+./ssh_config $user

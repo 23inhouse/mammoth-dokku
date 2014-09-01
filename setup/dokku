@@ -1,0 +1,15 @@
+#! /bin/sh
+
+user=$1
+
+echo '--- dokku'
+
+sudo wget -qO- https://raw.github.com/progrium/dokku/v0.2.3/bootstrap.sh | sudo DOKKU_TAG=v0.2.3 bash
+# dokku is so cool why not twice?
+sudo wget -qO- https://raw.github.com/progrium/dokku/v0.2.3/bootstrap.sh | sudo DOKKU_TAG=v0.2.3 bash
+# the third time is for good measure
+sudo wget -qO- https://raw.github.com/progrium/dokku/v0.2.3/bootstrap.sh | sudo DOKKU_TAG=v0.2.3 bash
+
+cat ~/setup/.ssh/id_rsa.pub | sudo sshcommand acl-add dokku $user
+
+echo '--- dokku finished'

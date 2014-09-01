@@ -1,0 +1,16 @@
+#! /bin/sh
+
+user=$1
+
+echo '--- ssh config'
+
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup.`date +%Y%m%d%H%M%S`
+
+sudo sed -i -e 's/Port 22/Port 30000/' /etc/ssh/sshd_config
+sudo sed -i -e 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+sudo sed -i -e 's/#UsePAM yes/sePAM no/' /etc/ssh/sshd_config
+sudo echo "AllowUsers $user dokku" >> /etc/ssh/sshd_config
+
+sudo restart ssh
+
+echo '--- ssh config finished'

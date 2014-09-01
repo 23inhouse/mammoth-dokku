@@ -1,0 +1,10 @@
+#! /bin/bash
+
+user=$1
+
+echo '--- del user'
+
+sudo deluser $user
+sudo rm -rf /home/$user
+
+echo '--- del user finished'

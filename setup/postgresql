@@ -1,0 +1,12 @@
+#! /bin/sh
+
+echo '--- postgresql'
+
+cd /var/lib/dokku/plugins
+git clone https://github.com/Kloadut/dokku-pg-plugin postgresql
+dokku plugins-install
+
+echo '--- postgresql finished'
+
+echo 'dont forget to run: dokku postgresql:create <db-name>'
+echo 'dokku postgresql:link <app-name> <db-name>'
