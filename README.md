@@ -9,7 +9,7 @@ AKA - It works on my machine TM*
 
 Add this line to your application's Gemfile:
 
-    git clone git://github.com/23inhouse/mammoth_dokku
+    git clone git://github.com/23inhouse/mammoth-dokku
 
 Then:
 
